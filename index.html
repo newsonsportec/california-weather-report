@@ -9,28 +9,25 @@
   <style>
     :root {
       --blue: #1d6df2;
-      --blue-dark: #071848;
-      --blue-soft: #eaf3ff;
+      --dark: #071848;
+      --green: #8be131;
       --text: #0b163f;
-      --muted: #5f6f8f;
-      --card: rgba(255, 255, 255, 0.94);
-      --border: rgba(20, 50, 100, 0.12);
-      --shadow: 0 18px 45px rgba(18, 58, 120, 0.13);
-      --radius: 22px;
+      --muted: #5c6b86;
+      --card: rgba(255, 255, 255, 0.92);
+      --border: rgba(10, 40, 90, 0.14);
+      --shadow: 0 18px 45px rgba(20, 60, 120, 0.14);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f3f8ff, #ffffff);
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, #ffffff 0%, #eef7ff 38%, #f8fbff 100%);
-      min-height: 100vh;
     }
 
     .page {
@@ -40,71 +37,61 @@
     }
 
     header {
-      position: sticky;
-      top: 12px;
-      z-index: 20;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
       padding: 16px 28px;
+      background: rgba(255, 255, 255, 0.92);
       border: 1px solid var(--border);
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(16px);
       box-shadow: 0 12px 32px rgba(0, 50, 120, 0.08);
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      backdrop-filter: blur(16px);
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      min-width: 280px;
     }
 
     .brand img {
-      width: 58px;
-      height: 58px;
+      width: 62px;
+      height: 62px;
       object-fit: contain;
+      border-radius: 14px;
     }
 
-    .brand-fallback {
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #fff7d7, #dcefff);
-      display: grid;
-      place-items: center;
-      font-size: 30px;
-    }
-
-    .brand h1 {
-      font-size: 27px;
+    .brand-text h1 {
+      font-size: 28px;
       line-height: 1;
       font-weight: 950;
-      letter-spacing: -0.9px;
-      color: var(--blue-dark);
+      color: var(--dark);
+      letter-spacing: -0.8px;
     }
 
-    .brand p {
+    .brand-text p {
       margin-top: 5px;
       font-size: 15px;
-      color: #304467;
-      font-weight: 750;
+      font-weight: 700;
+      color: #314466;
     }
 
     nav {
       display: flex;
+      gap: 28px;
       align-items: center;
       justify-content: center;
-      gap: 28px;
       flex: 1;
     }
 
     nav a {
       text-decoration: none;
-      color: #24375b;
-      font-weight: 750;
+      color: #273956;
+      font-weight: 800;
       font-size: 15px;
       padding: 8px 0;
     }
@@ -114,77 +101,75 @@
       border-bottom: 3px solid var(--blue);
     }
 
-    .live-badge {
+    .live {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       padding: 12px 18px;
+      background: #fff;
       border: 1px solid var(--border);
       border-radius: 14px;
       font-weight: 850;
-      background: #fff;
-      color: var(--blue-dark);
+      color: var(--dark);
       white-space: nowrap;
     }
 
-    .live-dot {
+    .dot {
       width: 9px;
       height: 9px;
-      border-radius: 99px;
       background: var(--blue);
+      border-radius: 50%;
       box-shadow: 0 0 0 6px rgba(29, 109, 242, 0.12);
     }
 
     .hero {
-      position: relative;
-      overflow: hidden;
-      min-height: 660px;
       margin-top: 14px;
-      border-radius: 28px;
       border: 1px solid var(--border);
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 720px;
       background:
-        linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(239,248,255,0.86) 42%, rgba(255,255,255,0.18) 100%),
-        url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/California_in_United_States.svg/1024px-California_in_United_States.svg.png");
-      background-repeat: no-repeat;
-      background-size: 42%, 620px;
-      background-position: left center, right 70px top 30px;
+        linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(239,248,255,0.85) 42%, rgba(255,255,255,0.28) 100%),
+        url("weather-front.png");
+      background-size: cover;
+      background-position: center;
       box-shadow: var(--shadow);
+      position: relative;
     }
 
-    .hero::before {
+    .hero::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 25% 45%, rgba(29,109,242,0.12), transparent 30%),
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.82));
+        radial-gradient(circle at 20% 40%, rgba(29,109,242,0.12), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.72));
       pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 40px;
-      padding: 70px 54px 34px;
+      padding: 78px 54px 34px;
+      max-width: 850px;
     }
 
     .hero-title {
-      font-size: clamp(52px, 6vw, 92px);
+      font-size: clamp(54px, 6vw, 96px);
       line-height: 0.94;
       letter-spacing: -4px;
       font-weight: 950;
-      color: var(--blue-dark);
+      color: var(--dark);
       margin-bottom: 26px;
     }
 
     .hero-subtitle {
-      max-width: 680px;
+      max-width: 700px;
       font-size: 24px;
       line-height: 1.4;
       color: #34496b;
       margin-bottom: 30px;
+      font-weight: 500;
     }
 
     .buttons {
@@ -201,7 +186,7 @@
       font-size: 17px;
       font-weight: 850;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .btn:hover {
@@ -215,26 +200,28 @@
     }
 
     .btn-light {
-      color: var(--blue-dark);
-      background: rgba(255,255,255,0.95);
+      color: var(--dark);
+      background: rgba(255,255,255,0.96);
       border: 1px solid var(--border);
       box-shadow: 0 12px 28px rgba(30, 60, 100, 0.08);
     }
 
     .features {
       display: grid;
-      grid-template-columns: repeat(3, minmax(150px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      max-width: 790px;
+      max-width: 780px;
     }
 
     .feature {
       display: flex;
       gap: 12px;
       align-items: flex-start;
-      padding: 12px;
+      padding: 14px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
     }
 
     .feature-icon {
@@ -271,110 +258,20 @@
       line-height: 1.35;
     }
 
-    .map-area {
-      position: relative;
-      min-height: 410px;
-    }
-
-    .pin {
-      position: absolute;
-      min-width: 132px;
-      padding: 12px 14px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(30, 80, 150, 0.12);
-      box-shadow: 0 12px 30px rgba(15, 46, 110, 0.16);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .pin span {
-      font-size: 25px;
-    }
-
-    .pin small {
-      display: block;
-      font-size: 11px;
-      color: #48607f;
-      font-weight: 700;
-    }
-
-    .pin strong {
-      font-size: 20px;
-      color: var(--blue-dark);
-    }
-
-    .hot strong {
-      color: #e8401c;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-6px);
-      }
-    }
-
-    .pin.sf {
-      left: 2%;
-      top: 28%;
-    }
-
-    .pin.la {
-      left: 32%;
-      top: 63%;
-      animation-delay: 0.4s;
-    }
-
-    .pin.sd {
-      left: 54%;
-      top: 78%;
-      animation-delay: 0.8s;
-    }
-
-    .pin.sac {
-      left: 42%;
-      top: 28%;
-      animation-delay: 1s;
-    }
-
-    .pin.fresno {
-      left: 58%;
-      top: 44%;
-      animation-delay: 1.4s;
-    }
-
-    .pin.tahoe {
-      right: 2%;
-      top: 28%;
-      animation-delay: 1.7s;
-    }
-
-    .pin.palm {
-      right: 0;
-      top: 60%;
-      animation-delay: 2s;
-    }
-
     .dashboard {
       position: relative;
       z-index: 3;
       display: grid;
-      grid-template-columns: 1.15fr 1fr 0.95fr 1.25fr 1fr;
+      grid-template-columns: 1.15fr 1fr 1fr 1.25fr;
       gap: 18px;
       padding: 0 54px 28px;
-      margin-top: -120px;
+      margin-top: 120px;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: 22px;
       padding: 22px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
@@ -383,7 +280,7 @@
     .card h3 {
       font-size: 16px;
       margin-bottom: 12px;
-      color: var(--blue-dark);
+      color: var(--dark);
     }
 
     .location {
@@ -408,7 +305,7 @@
       font-size: 54px;
       font-weight: 950;
       letter-spacing: -2px;
-      color: var(--blue-dark);
+      color: var(--dark);
     }
 
     .condition {
@@ -443,54 +340,6 @@
       font-weight: 900;
     }
 
-    .wind-graphic {
-      height: 96px;
-      border-radius: 16px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.1), rgba(220,238,255,0.9)),
-        linear-gradient(135deg, #eef7ff, #dcecff);
-      display: grid;
-      place-items: center;
-      font-size: 54px;
-      margin-top: 14px;
-    }
-
-    .aqi-number {
-      font-size: 48px;
-      font-weight: 950;
-      letter-spacing: -1px;
-    }
-
-    .badge-good {
-      float: right;
-      padding: 6px 10px;
-      border-radius: 10px;
-      background: #dff8e6;
-      color: #147a34;
-      font-size: 12px;
-      font-weight: 850;
-    }
-
-    .aqi-bar {
-      height: 9px;
-      border-radius: 20px;
-      margin: 18px 0 8px;
-      background: linear-gradient(90deg, #29b35a, #e5df39, #f39b33, #f04c3f);
-      position: relative;
-    }
-
-    .aqi-dot {
-      position: absolute;
-      top: -4px;
-      left: 20%;
-      width: 17px;
-      height: 17px;
-      border: 3px solid white;
-      border-radius: 50%;
-      background: #29b35a;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
     .hours {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -510,7 +359,7 @@
     }
 
     .hour strong {
-      color: var(--blue-dark);
+      color: var(--dark);
     }
 
     .alert {
@@ -520,16 +369,13 @@
       display: flex;
       gap: 12px;
       align-items: flex-start;
+      background: #fff6df;
+      color: #8a5a00;
     }
 
     .alert.red {
       background: #fff0f0;
       color: #a42525;
-    }
-
-    .alert.yellow {
-      background: #fff6df;
-      color: #8a5a00;
     }
 
     .alert-icon {
@@ -549,14 +395,16 @@
 
     .data-strip {
       display: grid;
-      grid-template-columns: 1.4fr repeat(4, 1fr);
+      grid-template-columns: 1.4fr repeat(3, 1fr);
       gap: 20px;
-      margin: 18px 54px 30px;
+      margin: 18px 54px 34px;
       padding: 24px;
       border: 1px solid rgba(29, 109, 242, 0.18);
       border-radius: 22px;
       background: linear-gradient(135deg, rgba(239, 248, 255, 0.95), rgba(255,255,255,0.9));
       box-shadow: 0 14px 35px rgba(20, 80, 150, 0.08);
+      position: relative;
+      z-index: 3;
     }
 
     .data-item {
@@ -590,6 +438,8 @@
     }
 
     footer {
+      position: relative;
+      z-index: 3;
       text-align: center;
       padding: 18px 0 8px;
       color: #566987;
@@ -616,17 +466,9 @@
         justify-content: flex-start;
       }
 
-      .hero-content {
-        grid-template-columns: 1fr;
-      }
-
-      .map-area {
-        min-height: 360px;
-      }
-
       .dashboard {
         grid-template-columns: repeat(2, 1fr);
-        margin-top: 0;
+        margin-top: 40px;
       }
 
       .data-strip {
@@ -643,8 +485,12 @@
         padding: 14px;
       }
 
-      .brand h1 {
+      .brand-text h1 {
         font-size: 22px;
+      }
+
+      nav {
+        gap: 16px;
       }
 
       .hero-content {
@@ -672,45 +518,6 @@
       .data-strip {
         margin: 18px 20px;
       }
-
-      .pin {
-        transform: scale(0.9);
-      }
-
-      .pin.sf {
-        left: 0;
-        top: 18%;
-      }
-
-      .pin.la {
-        left: 8%;
-        top: 58%;
-      }
-
-      .pin.sd {
-        left: 35%;
-        top: 76%;
-      }
-
-      .pin.sac {
-        left: 40%;
-        top: 23%;
-      }
-
-      .pin.fresno {
-        left: 46%;
-        top: 43%;
-      }
-
-      .pin.tahoe {
-        right: 0;
-        top: 23%;
-      }
-
-      .pin.palm {
-        right: 0;
-        top: 60%;
-      }
     }
   </style>
 </head>
@@ -720,15 +527,9 @@
 
     <header>
       <div class="brand">
-        <img
-          src="logo1.pang"
-          alt="Newson Sportec Logo"
-          onerror="this.style.display='none'; document.querySelector('.brand-fallback').style.display='grid';"
-        />
+        <img src="logo1.png" alt="Newson Sportec Logo" />
 
-        <div class="brand-fallback" style="display:none;">🌤️</div>
-
-        <div>
+        <div class="brand-text">
           <h1>Newson Sportec</h1>
           <p>California Weather Report</p>
         </div>
@@ -738,118 +539,56 @@
         <a class="active" href="#current">Current Weather</a>
         <a href="#forecast">Forecast</a>
         <a href="#alerts">Alerts</a>
-        <a href="#maps">Maps</a>
-        <a href="#air">Air Quality</a>
-        <a href="#about">About</a>
-        <a href="#api">API</a>
+        <a href="#about">Open Data</a>
       </nav>
 
-      <div class="live-badge">
-        <span class="live-dot"></span>
+      <div class="live">
+        <span class="dot"></span>
         Live Weather
       </div>
     </header>
 
     <main class="hero">
       <section class="hero-content">
-        <div>
-          <h2 class="hero-title">California<br />Weather Report</h2>
+        <h2 class="hero-title">California<br>Weather Report</h2>
 
-          <p class="hero-subtitle">
-            Live weather, alerts, and forecasts across California.
-          </p>
+        <p class="hero-subtitle">
+          Live weather, alerts, and forecasts across California.
+          Built for riders, travelers, families, and outdoor planning.
+        </p>
 
-          <div class="buttons">
-            <button class="btn btn-primary" onclick="loadDefaultWeather()">
-              ☀️ View Current Weather
-            </button>
+        <div class="buttons">
+          <button class="btn btn-primary" onclick="loadDefaultWeather()">
+            ☀️ View Current Weather
+          </button>
 
-            <button class="btn btn-light" onclick="useMyLocation()">
-              ➤ Use My Location
-            </button>
-          </div>
-
-          <div class="features">
-            <div class="feature">
-              <div class="feature-icon">⏱</div>
-              <div>
-                <h3>Real-time Conditions</h3>
-                <p>Live updates from official public weather data.</p>
-              </div>
-            </div>
-
-            <div class="feature">
-              <div class="feature-icon">⚠</div>
-              <div>
-                <h3>Weather Alerts</h3>
-                <p>Stay informed about heat, wind, rain, and safety notices.</p>
-              </div>
-            </div>
-
-            <div class="feature">
-              <div class="feature-icon">📈</div>
-              <div>
-                <h3>Accurate Forecasts</h3>
-                <p>Hourly, daily, and regional weather outlooks.</p>
-              </div>
-            </div>
-          </div>
+          <button class="btn btn-light" onclick="useMyLocation()">
+            ➤ Use My Location
+          </button>
         </div>
 
-        <div class="map-area" id="maps">
-          <div class="pin sf">
-            <span>🌤️</span>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">⏱</div>
             <div>
-              <small>San Francisco</small>
-              <strong id="pin-sf">64°</strong>
+              <h3>Real-time Conditions</h3>
+              <p>Live updates from public weather data.</p>
             </div>
           </div>
 
-          <div class="pin la">
-            <span>🌤️</span>
+          <div class="feature">
+            <div class="feature-icon">⚠</div>
             <div>
-              <small>Los Angeles</small>
-              <strong id="pin-la">72°</strong>
+              <h3>Weather Alerts</h3>
+              <p>Check heat, wind, rain, and safety notices.</p>
             </div>
           </div>
 
-          <div class="pin sd">
-            <span>🌤️</span>
+          <div class="feature">
+            <div class="feature-icon">📈</div>
             <div>
-              <small>San Diego</small>
-              <strong id="pin-sd">71°</strong>
-            </div>
-          </div>
-
-          <div class="pin sac hot">
-            <span>☀️</span>
-            <div>
-              <small>Sacramento</small>
-              <strong id="pin-sac">92°</strong>
-            </div>
-          </div>
-
-          <div class="pin fresno hot">
-            <span>☀️</span>
-            <div>
-              <small>Fresno</small>
-              <strong id="pin-fresno">94°</strong>
-            </div>
-          </div>
-
-          <div class="pin tahoe">
-            <span>🌧️</span>
-            <div>
-              <small>Lake Tahoe</small>
-              <strong id="pin-tahoe">47°</strong>
-            </div>
-          </div>
-
-          <div class="pin palm hot">
-            <span>☀️</span>
-            <div>
-              <small>Palm Springs</small>
-              <strong id="pin-palm">105°</strong>
+              <h3>Hourly Forecasts</h3>
+              <p>See the next available forecast periods.</p>
             </div>
           </div>
         </div>
@@ -867,10 +606,10 @@
             <div class="weather-icon" id="weather-icon">🌤️</div>
 
             <div>
-              <div class="big-temp" id="current-temp">64°F</div>
-              <div class="condition" id="condition-text">Partly Cloudy</div>
+              <div class="big-temp" id="current-temp">--°F</div>
+              <div class="condition" id="condition-text">Loading...</div>
               <div class="small-text" id="short-forecast">
-                Loading live weather...
+                Loading live weather from public weather data...
               </div>
             </div>
           </div>
@@ -878,12 +617,12 @@
           <div class="stats">
             <div>
               <div class="stat-label">Wind</div>
-              <div class="stat-value" id="wind-speed">14 mph</div>
+              <div class="stat-value" id="wind-speed">--</div>
             </div>
 
             <div>
               <div class="stat-label">Direction</div>
-              <div class="stat-value" id="wind-direction">W</div>
+              <div class="stat-value" id="wind-direction">--</div>
             </div>
 
             <div>
@@ -900,90 +639,41 @@
 
         <div class="card">
           <h3>Wind</h3>
-
-          <div class="aqi-number" id="wind-main">14</div>
-          <p class="small-text">mph</p>
-
-          <div class="wind-graphic">🌬️</div>
+          <div class="big-temp" id="wind-main">--</div>
+          <p class="small-text">Current wind speed in mph.</p>
 
           <div class="stats">
             <div>
               <div class="stat-label">Speed</div>
-              <div class="stat-value" id="wind-speed-2">14 mph</div>
+              <div class="stat-value" id="wind-speed-2">--</div>
             </div>
 
             <div>
               <div class="stat-label">Direction</div>
-              <div class="stat-value" id="wind-direction-2">W</div>
+              <div class="stat-value" id="wind-direction-2">--</div>
             </div>
           </div>
         </div>
 
-        <div class="card" id="air">
-          <span class="badge-good">Good</span>
-
-          <h3>Air Quality</h3>
-
-          <div class="aqi-number">42</div>
-
-          <p class="small-text">
-            AQI sample display. You can connect a live air-quality API later.
-          </p>
-
-          <div class="aqi-bar">
-            <span class="aqi-dot"></span>
-          </div>
-
-          <p class="small-text">
-            0 &nbsp;&nbsp; 50 &nbsp;&nbsp; 100 &nbsp;&nbsp; 150 &nbsp;&nbsp; 200+
-          </p>
-        </div>
-
         <div class="card" id="forecast">
           <h3>Hourly Forecast</h3>
-
-          <p class="small-text">Next available forecast periods</p>
+          <p class="small-text">Next available forecast periods.</p>
 
           <div class="hours" id="hourly-list">
             <div class="hour">
               <small>Now</small>
               <div>🌤️</div>
-              <strong>64°</strong>
-            </div>
-
-            <div class="hour">
-              <small>1 PM</small>
-              <div>☀️</div>
-              <strong>66°</strong>
-            </div>
-
-            <div class="hour">
-              <small>2 PM</small>
-              <div>☀️</div>
-              <strong>67°</strong>
-            </div>
-
-            <div class="hour">
-              <small>3 PM</small>
-              <div>☀️</div>
-              <strong>68°</strong>
-            </div>
-
-            <div class="hour">
-              <small>4 PM</small>
-              <div>🌤️</div>
-              <strong>66°</strong>
+              <strong>--°</strong>
             </div>
           </div>
         </div>
 
         <div class="card" id="alerts">
-          <h3>Weather Alerts</h3>
+          <h3>California Alerts</h3>
 
           <div id="alerts-list">
-            <div class="alert yellow">
+            <div class="alert">
               <div class="alert-icon">ℹ️</div>
-
               <div>
                 <strong>Loading Alerts</strong>
                 <p>Checking current California weather alerts...</p>
@@ -996,63 +686,48 @@
       <section class="data-strip" id="about">
         <div class="data-item">
           <div class="data-icon">☁️</div>
-
           <div>
             <h3>Powered by Public Weather Data</h3>
             <p>
-              This website uses free and open public weather information for learning,
+              This website uses public weather data for learning,
               demonstration, and weather awareness.
             </p>
           </div>
         </div>
 
         <div class="data-item">
-          <div class="data-icon">📊</div>
-
-          <div>
-            <h3>Open Data</h3>
-            <p>
-              Designed around public weather data and transparent information.
-            </p>
-          </div>
-        </div>
-
-        <div class="data-item">
           <div class="data-icon">🔄</div>
-
           <div>
             <h3>Auto Renewed</h3>
             <p>
-              The page refreshes weather information automatically.
-            </p>
-          </div>
-        </div>
-
-        <div class="data-item" id="api">
-          <div class="data-icon">⌘</div>
-
-          <div>
-            <h3>Developer Friendly</h3>
-            <p>
-              Built with HTML, CSS, and JavaScript for GitHub Pages.
+              Weather information refreshes automatically every 15 minutes.
             </p>
           </div>
         </div>
 
         <div class="data-item">
-          <div class="data-icon">👥</div>
-
+          <div class="data-icon">🧭</div>
           <div>
-            <h3>Built for Everyone</h3>
+            <h3>Use My Location</h3>
             <p>
-              Useful for riders, families, travelers, and outdoor planning.
+              Visitors can check local weather using browser location permission.
+            </p>
+          </div>
+        </div>
+
+        <div class="data-item">
+          <div class="data-icon">🏍️</div>
+          <div>
+            <h3>Built for Riders</h3>
+            <p>
+              Useful for road trips, outdoor planning, and riding conditions.
             </p>
           </div>
         </div>
       </section>
 
       <footer>
-        Open Data • MIT License • Contributions Welcome
+        Newson Sportec • California Weather Report • Open Data Weather Project
 
         <div class="updated" id="page-updated">
           Weather data updates automatically every 15 minutes.
@@ -1067,44 +742,6 @@
       lat: 37.7749,
       lon: -122.4194
     };
-
-    const CITY_PINS = [
-      {
-        id: "pin-sf",
-        lat: 37.7749,
-        lon: -122.4194
-      },
-      {
-        id: "pin-la",
-        lat: 34.0522,
-        lon: -118.2437
-      },
-      {
-        id: "pin-sd",
-        lat: 32.7157,
-        lon: -117.1611
-      },
-      {
-        id: "pin-sac",
-        lat: 38.5816,
-        lon: -121.4944
-      },
-      {
-        id: "pin-fresno",
-        lat: 36.7378,
-        lon: -119.7871
-      },
-      {
-        id: "pin-tahoe",
-        lat: 39.0968,
-        lon: -120.0324
-      },
-      {
-        id: "pin-palm",
-        lat: 33.8303,
-        lon: -116.5453
-      }
-    ];
 
     function weatherEmoji(text) {
       const value = String(text || "").toLowerCase();
@@ -1132,42 +769,37 @@
     }
 
     async function getNWSPoint(lat, lon) {
-      const pointURL = `https://api.weather.gov/points/${lat.toFixed(4)},${lon.toFixed(4)}`;
+      const url = `https://api.weather.gov/points/${lat.toFixed(4)},${lon.toFixed(4)}`;
 
-      const response = await fetch(pointURL, {
+      const response = await fetch(url, {
         headers: {
           "Accept": "application/geo+json"
         }
       });
 
       if (!response.ok) {
-        throw new Error("Unable to load NWS point data.");
+        throw new Error("Unable to load weather point.");
       }
 
       return response.json();
     }
 
-    async function loadWeather(
-      lat = DEFAULT_LOCATION.lat,
-      lon = DEFAULT_LOCATION.lon,
-      name = DEFAULT_LOCATION.name
-    ) {
+    async function loadWeather(lat, lon, name) {
       try {
         document.getElementById("short-forecast").textContent =
           "Loading live weather...";
 
         const pointData = await getNWSPoint(lat, lon);
+        const hourlyUrl = pointData.properties.forecastHourly;
 
-        const hourlyURL = pointData.properties.forecastHourly;
-
-        const forecastResponse = await fetch(hourlyURL, {
+        const forecastResponse = await fetch(hourlyUrl, {
           headers: {
             "Accept": "application/geo+json"
           }
         });
 
         if (!forecastResponse.ok) {
-          throw new Error("Unable to load hourly forecast.");
+          throw new Error("Unable to load forecast.");
         }
 
         const forecastData = await forecastResponse.json();
@@ -1175,40 +807,31 @@
         const current = periods[0];
 
         if (!current) {
-          throw new Error("No forecast periods found.");
+          throw new Error("No weather period available.");
         }
 
-        document.getElementById("location-name").textContent =
-          `📍 ${name}`;
-
+        document.getElementById("location-name").textContent = `📍 ${name}`;
         document.getElementById("current-temp").textContent =
           `${current.temperature}°${current.temperatureUnit}`;
-
         document.getElementById("condition-text").textContent =
           current.shortForecast;
-
         document.getElementById("short-forecast").textContent =
           current.detailedForecast || current.shortForecast;
-
         document.getElementById("weather-icon").textContent =
           weatherEmoji(current.shortForecast);
 
         document.getElementById("wind-speed").textContent =
           current.windSpeed || "--";
-
         document.getElementById("wind-direction").textContent =
           current.windDirection || "--";
-
         document.getElementById("wind-speed-2").textContent =
           current.windSpeed || "--";
-
         document.getElementById("wind-direction-2").textContent =
           current.windDirection || "--";
 
         const windNumber = parseInt(current.windSpeed, 10);
-
         document.getElementById("wind-main").textContent =
-          Number.isNaN(windNumber) ? "--" : windNumber;
+          Number.isNaN(windNumber) ? "--" : windNumber + " mph";
 
         document.getElementById("updated-time").textContent =
           formatTime(current.startTime);
@@ -1228,7 +851,6 @@
 
     function updateHourly(periods) {
       const hourlyList = document.getElementById("hourly-list");
-
       const nextHours = periods.slice(0, 5);
 
       hourlyList.innerHTML = nextHours.map((period, index) => {
@@ -1266,7 +888,7 @@
 
         if (alerts.length === 0) {
           alertsList.innerHTML = `
-            <div class="alert yellow">
+            <div class="alert">
               <div class="alert-icon">✅</div>
               <div>
                 <strong>No Active California Alerts</strong>
@@ -1274,16 +896,15 @@
               </div>
             </div>
           `;
-
           return;
         }
 
         alertsList.innerHTML = alerts.slice(0, 2).map((alert) => {
           const event = alert.properties.event || "Weather Alert";
           const area = alert.properties.areaDesc || "California";
-          const instruction =
-            alert.properties.instruction ||
+          const headline =
             alert.properties.headline ||
+            alert.properties.instruction ||
             "Please check local weather updates.";
 
           return `
@@ -1292,7 +913,7 @@
               <div>
                 <strong>${event}</strong>
                 <p>${area}</p>
-                <p>${instruction.substring(0, 120)}...</p>
+                <p>${headline.substring(0, 120)}...</p>
               </div>
             </div>
           `;
@@ -1301,7 +922,7 @@
         console.error(error);
 
         alertsList.innerHTML = `
-          <div class="alert yellow">
+          <div class="alert">
             <div class="alert-icon">ℹ️</div>
             <div>
               <strong>Alerts Unavailable</strong>
@@ -1309,31 +930,6 @@
             </div>
           </div>
         `;
-      }
-    }
-
-    async function updateCityPins() {
-      for (const city of CITY_PINS) {
-        try {
-          const pointData = await getNWSPoint(city.lat, city.lon);
-          const hourlyURL = pointData.properties.forecastHourly;
-
-          const forecastResponse = await fetch(hourlyURL, {
-            headers: {
-              "Accept": "application/geo+json"
-            }
-          });
-
-          const forecastData = await forecastResponse.json();
-          const current = forecastData.properties.periods[0];
-
-          if (current) {
-            document.getElementById(city.id).textContent =
-              `${current.temperature}°`;
-          }
-        } catch (error) {
-          console.warn("City pin update failed:", city.id);
-        }
       }
     }
 
@@ -1352,29 +948,24 @@
       }
 
       navigator.geolocation.getCurrentPosition(
-        (position) => {
+        function(position) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
 
           loadWeather(lat, lon, "Your Current Location");
         },
-        () => {
-          alert(
-            "Location permission was not allowed. Showing San Francisco weather instead."
-          );
-
+        function() {
+          alert("Location permission was not allowed. Showing San Francisco weather instead.");
           loadDefaultWeather();
         }
       );
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function() {
       loadDefaultWeather();
-      updateCityPins();
 
-      setInterval(() => {
+      setInterval(function() {
         loadDefaultWeather();
-        updateCityPins();
       }, 15 * 60 * 1000);
     });
   </script>
